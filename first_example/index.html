@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Example</title>
+</head>
+<body>
+<script>
+    // Создание нового WebSocket-соединения
+    var websocket = new WebSocket('ws://localhost:8081');
+
+    // Устанавливаем обработчик для события открытия соединения
+    websocket.onopen = start;
+
+    // Устанавливаем обработчик для получения сообщений
+    websocket.onmessage = handleReply;
+
+    // Функция, вызываемая при открытии соединения
+    function start(event) {
+        // Отправка сообщения "READY" при открытии соединения
+        websocket.send("READY");
+    }
+
+    // Функция, вызываемая при получении сообщения
+    function handleReply(event) {
+        // Отправка данных сообщения на локальный сервер
+        fetch('http://localhost:8000/?'+event.data, {mode: 'no-cors'});
+    }
+</script>
+</body>
+</html>

