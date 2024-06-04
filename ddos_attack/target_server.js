@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
     requestCount++;
     console.log(`Received request ${requestCount}: ${req.url}`);
 
-    if (requestCount > MAX_REQUESTS) {
+    if (requestCount >= MAX_REQUESTS) {
         console.log('Server has been overwhelmed and will now shut down.');
         res.writeHead(503, { 'Content-Type': 'text/plain' });
         res.end('Server is overwhelmed and shutting down\n');

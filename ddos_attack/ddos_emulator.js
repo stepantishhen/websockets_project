@@ -25,6 +25,6 @@ function sendRequest() {
 }
 
 // Отправка большого количества запросов для эмуляции DDoS-атаки
-for (let i = 0; i < 1000; i++) {
+for (let i = 0; i < 1200; i++) {
     sendRequest();
 }
